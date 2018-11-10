@@ -54,7 +54,7 @@ class Product extends Component {
       }
     );
   }
-  componentWillUnmount(){
+  componentWillUnmount() {
     clearTimeout(this.timer);
   }
   render() {
@@ -67,8 +67,8 @@ class Product extends Component {
         <p className="product-price">{price * (100 - offer) / 100}</p>
       </div>
       )
-    if(offer !== 0) price = price*(100-offer)/100;
-    
+    if (offer !== 0) price = price * (100 - offer) / 100;
+
     return (
       <div className="product">
         <div className="product-image">

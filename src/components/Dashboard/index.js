@@ -135,7 +135,7 @@ class Dashboard extends Component {
     const { withOffer, withoutOffer, match } = this.props;
     const products = [...withOffer, ...withoutOffer];
     const { proceedToCheckout, totalAmount } = this.state;
-    console.log({products});
+    // console.log({products});
     return (proceedToCheckout === true) ? (<Payment totalAmount={totalAmount} match={match}/>):(
       <div className="container">
         <Header
