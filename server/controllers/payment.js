@@ -71,7 +71,7 @@ const verifyOtp = async (req, res) => {
       message: 'Transaction Id, amount and otp is required to verify transaction'
     });
   otp = Number(otp);
-  amount = Number(otp);
+  amount = Number(amount);
 
   const SELECT_TRANSACTION_QUERY = `select * from transactions where id=${transactionId}`;
   try {
@@ -87,7 +87,6 @@ const verifyOtp = async (req, res) => {
       message: 'Errror. Transaction is not in pending state. its either already completed or failed'
     });
     if (result[0].otp !== otp) {
-      await updateTransactionStatus(transactionId, 'failed')
       return res.status(403).json({
         success: false,
         message: 'Transaction failed. Otp does not match'
@@ -95,7 +94,6 @@ const verifyOtp = async (req, res) => {
     }
     const currentTimestamp = (new Date()).getTime();
     if (result[0].otpExpiresIn < currentTimestamp) {
-      await updateTransactionStatus(transactionId, 'failed');
       return res.status(403).json({
         success: false,
         message: 'Transaction failed. Otp expired.'
@@ -127,7 +125,7 @@ const verifyOtp = async (req, res) => {
     }
     if (transactionType === 'netbanking') {
       const SELECT_NETBANK_QUERY = `select balance from netbankingDetails where customerId= "${refId}"`;
-      const netBankResp = await pool.query(SELECT_CARD_QUERY);
+      const netBankResp = await pool.query(SELECT_NETBANK_QUERY);
       if (!netBankResp || netBankResp.length === 0) {
         await updateTransactionStatus(transactionId, 'failed')
         return res.status(403).json({

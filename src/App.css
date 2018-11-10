@@ -17,7 +17,10 @@
 .App-link {
   color: #61dafb;
 }
-
+.ant-carousel {
+  margin-top: 40px;
+  margin-bottom: -40px;
+}
 .ant-carousel .slick-slide {
   text-align: center;
   height: 300px;

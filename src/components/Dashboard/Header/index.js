@@ -3,7 +3,6 @@ import CartScrollBar from "./../CartScrollBar";
 import EmptyCart from "./../empty-states/EmptyCart";
 import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 import { findDOMNode } from "react-dom";
-import { Link } from 'react-router-dom';
 
 class Header extends Component {
   constructor(props) {
@@ -48,7 +47,6 @@ class Header extends Component {
 
   handleClickOutside(event) {
     const cartNode = findDOMNode(this.refs.cartPreview);
-    const buttonNode = findDOMNode(this.refs.cartButton);
     if (cartNode && cartNode.classList.contains("active")) {
       if (!cartNode || !cartNode.contains(event.target)) {
         this.setState({
@@ -80,7 +78,7 @@ class Header extends Component {
     cartItems = this.state.cart.map(product => {
       return (
         <li className="cart-item" key={product.name}>
-          <img className="product-image" src={product.image} />
+          <img className="product-image" src={product.image} alt = {product.name}/>
           <div className="product-info">
             <p className="product-name">{product.name}</p>
             <p className="product-price">{product.price}</p>

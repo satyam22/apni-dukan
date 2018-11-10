@@ -41,7 +41,7 @@ export const verifyNetbanking = async (payload, callback) => {
 }
 
 export const verifyUpi = async (payload, callback) => {
-  const { upiId, upiPin } = payload;
+  const { upiAddress:upiId, upiPin } = payload;
   try {
     const response = await fetch(`${API_BASE_URL}/payment/verify/upi`, {
       method: 'POST',
@@ -61,14 +61,14 @@ export const verifyUpi = async (payload, callback) => {
 }
 
 export const verifyOtp = async (payload, callback) => {
-  const { otp, amount, transactioId } = payload;
+  const { otp, amount, transactionId } = payload;
   try {
     const response = await fetch(`${API_BASE_URL}/payment/verify/otp`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
-      body: JSON.stringify({otp, amount, transactioId })
+      body: JSON.stringify({otp, amount, transactionId })
     });
     const { success, message } = await response.json();
     callback({ success, message })

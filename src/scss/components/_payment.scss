@@ -71,3 +71,27 @@ font-weight: 400;
   right: 0;
   padding: 20px;
 }
+
+.success-page, .failure-page {
+  display: flex;
+  background: rgba(62, 255, 62, 0.959);
+  color: white;
+  flex-direction: column;
+  width: 400px;
+  margin: auto;
+  margin-top: 10%;
+  height: 400px;
+  justify-content: center;
+  align-items: center
+}
+.success-page > div, .failure-page > div {
+  padding: 20px;
+  color: white;
+}
+.success-page .message, .failure-page .message{
+  font-size: 16px;
+}
+
+.failure-page{
+  background-color: rgb(133, 4, 4);
+}

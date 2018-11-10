@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import MaskedInput from 'react-maskedinput';
-import { Button, message, Spin } from 'antd';
+import { Button, message } from 'antd';
 import creditCardType from 'credit-card-type';
 import luhn from 'luhn';
 import { verifyCard } from './../../../api';
@@ -36,10 +36,12 @@ export default class CreditCard extends Component {
     verifyCard(({cardHolder, cvv, expiry, cardNumber, cardType}), (data) => {
       if(data.success){
         this.props.proceedToVerifyOTP(data.otp, data.id);
+        this.setState({status: 'successful'});
       }
       else {
         const errorMessage = data.message || 'Failed to validate card details.'
         message.error(errorMessage);
+        this.setState({status: 'failed'});
       }
     })
     this.setState({status: 'pending'});
