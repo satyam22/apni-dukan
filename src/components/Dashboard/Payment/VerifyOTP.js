@@ -26,7 +26,7 @@ export default class VerifyOTP extends Component {
     verifyOtp(({otp, amount, transactionId}), ({success, message}) => {
       if(success === true) this.setState({status: 'successful',message})
       else this.setState({status: 'failed',message})
-      console.log({success, message })
+      // console.log({success, message })
     })
     this.setState({status: 'pending'});
   }

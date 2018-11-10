@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Route, Switch } from 'react-router-dom';
+import { Link, Route, Switch, Redirect } from 'react-router-dom';
 
 import UPI from './UPI';
 import CreditCard from './CreditCard';
@@ -21,11 +21,11 @@ class Payment extends Component {
 
   render() {
     const { match, totalAmount } = this.props;
-    console.log({ match, totalAmount });
+    // console.log({ match, totalAmount });
     const { proceedToVerifyOTP, otp, transactionId } = this.state;
-    return proceedToVerifyOTP === true 
-    ? (<VerifyOTP otp = {otp} amount = {totalAmount} transactionId = {transactionId} />)
-    : (
+    return proceedToVerifyOTP === true
+      ? (<VerifyOTP otp={otp} amount={totalAmount} transactionId={transactionId} />)
+      : (
         <div className="payment">
           <div className="navigation">
             <div className="navigation-item"><Link to={`${match.path}/card`}>Credit/Debit Card</Link></div>
@@ -40,6 +40,7 @@ class Payment extends Component {
                 () => <NetBanking proceedToVerifyOTP={this.handleProceedToVerifyOTP} />} />
               <Route path={`${match.path}/upi`} render={
                 () => <UPI proceedToVerifyOTP={this.handleProceedToVerifyOTP} />} />
+              <Redirect to = {`${match.path}/card`} />
             </Switch>
           </div>
         </div>

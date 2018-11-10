@@ -12,7 +12,7 @@ export const verifyCard = async (payload, callback) => {
     });
     const { success, result, message } = await response.json();
     const { otp, id } = result;
-    console.log({ success, otp, id });
+    // console.log({ success, otp, id });
     if (success) callback({ otp, success, id })
     else callback(({ success, message }))
   } catch (error) {
@@ -32,7 +32,7 @@ export const verifyNetbanking = async (payload, callback) => {
     });
     const { success, result, message } = await response.json();
     const { otp, id } = result;
-    console.log({ success, otp, id });
+    // console.log({ success, otp, id });
     if (success) callback({ otp, success, id })
     else callback(({ success, message }))
   } catch (error) {
@@ -52,7 +52,7 @@ export const verifyUpi = async (payload, callback) => {
     });
     const { success, result, message } = await response.json();
     const { otp, id } = result;
-    console.log({ success, otp, id });
+    // console.log({ success, otp, id });
     if (success) callback({ otp, success, id })
     else callback(({ success, message }))
   } catch (error) {

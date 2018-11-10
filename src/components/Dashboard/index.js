@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import Offers from './Offers'
 import Header from "./Header";
 import Products from "./ProductList";
-// import Footer from "./../Footer";
+import Footer from "./../Footer";
 import QuickView from "./QuickView";
 import "./../../scss/style.scss";
 import Payment from './Payment';
@@ -48,7 +48,6 @@ class Dashboard extends Component {
     let productID = selectedProducts.id;
     let productQty = selectedProducts.quantity;
     if (this.checkProduct(productID)) {
-      console.log("hi");
       let index = cartItem.findIndex(x => x.id === productID);
       cartItem[index].quantity =
         Number(cartItem[index].quantity) + Number(productQty);
@@ -68,8 +67,6 @@ class Dashboard extends Component {
           cartBounce: false,
           quantity: 1
         });
-        console.log(this.state.quantity);
-        console.log(this.state.cart);
       }.bind(this),
       1000
     );
@@ -112,21 +109,19 @@ class Dashboard extends Component {
     });
   }
 
-  //Reset Quantity
   updateQuantity(qty) {
-    console.log("quantity added...");
     this.setState({
       quantity: qty
     });
   }
-  // Open Modal
+
   openModal(product) {
     this.setState({
       quickViewProduct: product,
       modalActive: true
     });
   }
-  // Close Modal
+
   closeModal() {
     this.setState({
       modalActive: false
@@ -164,7 +159,7 @@ class Dashboard extends Component {
           updateQuantity={this.updateQuantity}
           openModal={this.openModal}
         />
-        {/* <Footer /> */}
+        <Footer />
         <QuickView
           product={this.state.quickViewProduct}
           openModal={this.state.modalActive}

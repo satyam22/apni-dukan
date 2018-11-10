@@ -3,7 +3,6 @@ import { verifyCard, verifyNetbanking, verifyUpi, verifyOtp } from './../control
 
 const router = express.Router();
 
-
 router.post('/verify/card', verifyCard);
 router.post('/verify/netbanking', verifyNetbanking);
 router.post('/verify/upi', verifyUpi);

@@ -78,7 +78,7 @@ class Header extends Component {
     cartItems = this.state.cart.map(product => {
       return (
         <li className="cart-item" key={product.name}>
-          <img className="product-image" src={product.image} alt = {product.name}/>
+          <img className="product-image" src={product.image} alt={product.name} />
           <div className="product-info">
             <p className="product-name">{product.name}</p>
             <p className="product-price">{product.price}</p>
@@ -214,9 +214,9 @@ class Header extends Component {
                 <button
                   type="button"
                   className={this.state.cart.length > 0 ? " " : "disabled"}
-                  onClick = { () => this.props.handleProceedToCheckout() }
+                  onClick={() => this.props.handleProceedToCheckout()}
                 >
-                PROCEED TO CHECKOUT
+                  PROCEED TO CHECKOUT
                 </button>
 
               </div>

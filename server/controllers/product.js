@@ -6,7 +6,7 @@ const GET_OFFER_COUNT_PRODUCTS = `select count(*) from products where offer > 0`
 
 const GET_OFFER_PRODUCTS = `select * from products where offer > 0 limit ?, ?`;
 const GET_PRODUCT = `select * from products where productName = ?`
-const DEFAULT_LIMIT = 10;
+const DEFAULT_LIMIT = 30;
 const DEFAULT_SKIP = 0;
 
 const getAllProducts = async (req, res) => {
@@ -58,10 +58,6 @@ const getProductByName = async (req, res) => {
     res.status(500).json({ ok: false, message: error.message });
   }
 }
-
-// const getProductByPrice = async (req, res) => {
-
-// }
 
 module.exports = {
   getAllProducts,

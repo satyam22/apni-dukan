@@ -3,19 +3,11 @@ import { findDOMNode } from "react-dom";
 
 class QuickView extends Component {
   componentDidMount() {
-    document.addEventListener(
-      "click",
-      this.handleClickOutside.bind(this),
-      true
-    );
+    document.addEventListener("click", this.handleClickOutside.bind(this), true);
   }
 
   componentWillUnmount() {
-    document.removeEventListener(
-      "click",
-      this.handleClickOutside.bind(this),
-      true
-    );
+    document.removeEventListener("click", this.handleClickOutside.bind(this),true);
   }
 
   handleClickOutside(event) {
@@ -31,17 +23,9 @@ class QuickView extends Component {
 
   render() {
     return (
-      <div
-        className={
-          this.props.openModal ? "modal-wrapper active" : "modal-wrapper"
-        }
-      >
+      <div className={ this.props.openModal ? "modal-wrapper active" : "modal-wrapper" } >
         <div className="modal" ref="modal">
-          <button
-            type="button"
-            className="close"
-            onClick={this.handleClose.bind(this)}
-          >
+          <button type="button" className="close" onClick={this.handleClose.bind(this)} >
             &times;
           </button>
           <div className="quick-view">
@@ -49,7 +33,7 @@ class QuickView extends Component {
               <img
                 src={this.props.product.image}
                 alt={this.props.product.name}
-                style={{maxHeight: '450px',maxWidth:'450px'}}
+                style={{ maxHeight: '450px', maxWidth: '450px' }}
               />
             </div>
             <div className="quick-view-details">

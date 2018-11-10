@@ -17,19 +17,22 @@ export default class NetBanking extends Component {
       status: ''
     };
   }
+
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   }
+
   handleBankName = (bankName) => {
-    this.setState({bankName});
+    this.setState({ bankName });
   }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const { bankName, customerId, password } = this.state;
-    console.log({ bankName, customerId, password });
+    // console.log({ bankName, customerId, password });
 
-    verifyNetbanking(({bankName, customerId, password }), (data) => {
-      if(data.success){
+    verifyNetbanking(({ bankName, customerId, password }), (data) => {
+      if (data.success) {
         this.props.proceedToVerifyOTP(data.otp, data.id);
       }
       else {
@@ -37,7 +40,7 @@ export default class NetBanking extends Component {
         message.error(errorMessage);
       }
     })
-    this.setState({status: 'pending'});
+    this.setState({ status: 'pending' });
   }
   render() {
     const { status } = this.state;
@@ -49,23 +52,25 @@ export default class NetBanking extends Component {
             style={{ width: 360 }}
             placeholder="Select bank"
             optionFilterProp="children"
-            filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+            filterOption={
+              (input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+            }
             onChange={this.handleBankName}
           >
-          {options}
+            {options}
           </Select>
         </div>
         <div className="customer-id">
           <div className="label">Customer ID</div>
-          <input type="text" name="customerId" onChange={this.onChange} className = "input" />
+          <input type="text" name="customerId" onChange={this.onChange} className="input" />
         </div>
         <div className="customer-password" >
           <div className="label">Password</div>
-          <input type="password" name="password" onChange={this.onChange} className = "input" />
+          <input type="password" name="password" onChange={this.onChange} className="input" />
         </div>
         <div className="submit">
-          <Button block onClick = {this.handleSubmit}
-          loading = { status === 'pending'? true: false} >PROCEED TO PAY</Button>
+          <Button block onClick={this.handleSubmit}
+            loading={status === 'pending' ? true : false} >PROCEED TO PAY</Button>
         </div>
       </div>
     )

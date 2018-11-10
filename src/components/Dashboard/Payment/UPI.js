@@ -3,9 +3,9 @@ import MaskedInput from 'react-maskedinput';
 import { Button, message } from 'antd';
 import { verifyUpi } from './../../../api';
 
-export default class UPI extends Component{
-  constructor(props){
-    super(props); 
+export default class UPI extends Component {
+  constructor(props) {
+    super(props);
     this.state = {
       upiAddress: '',
       upiPin: '',
@@ -13,15 +13,15 @@ export default class UPI extends Component{
     };
   }
   onChange = (e) => {
-    this.setState({[e.target.name]: e.target.value})
+    this.setState({ [e.target.name]: e.target.value })
   }
   handleSubmit = (e) => {
     e.preventDefault();
     const { upiAddress, upiPin } = this.state;
-    console.log({ upiAddress, upiPin });
+    // console.log({ upiAddress, upiPin });
 
     verifyUpi(({ upiAddress, upiPin }), (data) => {
-      if(data.success){
+      if (data.success) {
         this.props.proceedToVerifyOTP(data.otp, data.id);
       }
       else {
@@ -29,25 +29,25 @@ export default class UPI extends Component{
         message.error(errorMessage);
       }
     })
-    this.setState({status: 'pending'});
+    this.setState({ status: 'pending' });
   }
-  render(){
+  render() {
     const { status } = this.state;
-    return(
+    return (
       <div className="upi">
-      <div className="upi-Address">
-        <div className="label">UPI Address</div>
-        <input type="text" name="upiAddress" onChange={this.onChange} className = "input" />
+        <div className="upi-Address">
+          <div className="label">UPI Address</div>
+          <input type="text" name="upiAddress" onChange={this.onChange} className="input" />
+        </div>
+        <div className="upi-pin" >
+          <div className="label">UPI PIN</div>
+          <MaskedInput className="input" mask="111111" name="upiPin" onChange={this.onChange} placeholder="" />
+        </div>
+        <div className="submit">
+          <Button block onClick={this.handleSubmit}
+            loading={status === 'pending' ? true : false}>PROCEED TO PAY</Button>
+        </div>
       </div>
-      <div className="upi-pin" >
-        <div className="label">UPI PIN</div>
-        <MaskedInput className="input" mask="111111" name="upiPin" onChange={this.onChange} placeholder=""/>
-      </div>
-      <div className="submit">
-        <Button block onClick = {this.handleSubmit}
-        loading = {status === 'pending' ? true: false }>PROCEED TO PAY</Button>
-      </div>
-    </div>
     )
   }
 }

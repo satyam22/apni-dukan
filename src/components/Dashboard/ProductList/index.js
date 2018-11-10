@@ -13,7 +13,7 @@ class Products extends Component {
   }
   render() {
     const { products, searchTerm } = this.props;
-    // console.log("search term:: ", searchTerm);
+
     const productsData = products
       .filter(({productName}) => (!searchTerm || productName.toLowerCase().includes(searchTerm.toLowerCase())))
       .map(({ productName, price, imageUrl, quantity, offer }) => {
@@ -34,7 +34,6 @@ class Products extends Component {
         );
       });
 
-    // Empty and Loading States
     let view;
     if (productsData.length <= 0 && !searchTerm) {
       view = <LoadingProducts />;

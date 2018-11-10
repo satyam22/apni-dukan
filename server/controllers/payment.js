@@ -6,10 +6,11 @@ const verifyCard = async (req, res) => {
     return res.status(400).json({
       message: "card number, card holder name, card type, expiry, cvv is required to verify a card"
     });
+
   const SELECT_CARD_QUERY = `select * from cardDetails where number="${cardNumber}" and name="${cardHolder}" and cvv="${cvv}" and exp="${expiry}" and issuingNetwork="${cardType}"`;
   console.log({ SELECT_CARD_QUERY });
   try {
-    const result = await pool.query(SELECT_CARD_QUERY, [cardNumber, cardHolder, cvv, expiry, cardType]);
+    const result = await pool.query(SELECT_CARD_QUERY, [ cardNumber, cardHolder, cvv, expiry, cardType ]);
     console.log({ result });
     if (!result || result.length === 0)
       res.status(403).json({ success: false, message: "Incorrect card details" });
@@ -30,7 +31,7 @@ const verifyNetbanking = async (req, res) => {
   const SELECT_NETBANK_QUERY = `select * from netbankingDetails where customerId="${customerId}" and bankName="${bankName}" and password="${password}"`;
   console.log({ SELECT_NETBANK_QUERY });
   try {
-    const result = await pool.query(SELECT_NETBANK_QUERY, [customerId, bankName, password]);
+    const result = await pool.query(SELECT_NETBANK_QUERY, [ customerId, bankName, password ]);
     console.log({ result });
     if (!result || result.length === 0)
       res.status(403).json({ success: false, message: "Incorrect login details" });
@@ -51,7 +52,7 @@ const verifyUpi = async (req, res) => {
   const SELECT_UPI_QUERY = `select * from upiDetails where upiId = "${upiId}" and upiPin = "${upiPin}"`;
   console.log({ SELECT_UPI_QUERY });
   try {
-    const result = await pool.query(SELECT_UPI_QUERY, [upiId, upiPin]);
+    const result = await pool.query(SELECT_UPI_QUERY, [ upiId, upiPin ]);
     console.log({ result });
     if (!result || result.length === 0)
       res.status(403).json({ success: false, message: "Incorrect login details" });
