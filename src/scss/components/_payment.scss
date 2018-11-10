@@ -1,0 +1,73 @@
+.payment {
+  display: flex;
+  max-width: 700px;
+  height: 400px;
+  margin: auto;
+  margin-top: 100px; 
+  border: 1px solid #eee;
+  background-color: #fff;
+}
+.payment .navigation {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-right: 1px solid #eee;
+}
+.payment .navigation .navigation-item {
+padding: 20px 40px;
+border-bottom: 1px solid #eee;
+font-weight: 700;
+}
+.payment-forms{
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+  align-items: center;
+}
+.credit-card, .net-banking, .upi, .verify-otp {
+  width: 400px;
+}
+.credit-card > div , .net-banking > div, .upi > div, .verify-otp > div{
+  padding: 15px 20px;
+}
+.credit-card .card-cvv-exp{
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.credit-card .card-cvv-exp .input{
+  width: 100px;
+}
+.credit-card > div > div {
+font-weight: 400;
+}
+.credit-card .card-number{
+  position: relative;
+}
+.credit-card .input, .net-banking .input, .upi .input, .verify-otp .input{
+  padding: 5px;
+  border: 1px solid #eee;
+  width: 360px;
+}
+.credit-card .card-type{
+  position: absolute;
+  bottom: 17px;
+  right: 28px;
+  line-height: 2.1;
+  font-weight: 700;
+}
+.credit-card .label, .net-banking .label, .upi .label , .verify-otp .label {
+  color: rgba(136, 136, 136, 0.671);
+  font-style: italic;
+}
+
+.verify-otp {
+  margin: auto;
+  margin-top: 10%;
+}
+.verify-otp .affix {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 20px;
+}
