@@ -12,7 +12,7 @@ create table `cardDetails`(
   `name` varchar(100) not null,
   `address` varchar(200),
   `country` varchar(100),
-  `cvv` int not null check `cvv` >= 100 and `cvv` < 1000,
+  `cvv` int not null check (`cvv` >= 100 and `cvv` < 1000),
   `exp` varchar(7) not null,
   `balance` int unsigned default 0,
   `issuingNetwork` varchar(100) not null
@@ -32,9 +32,9 @@ create table `netbankingDetails` (
 )
 create table `transactions`(
   `int` int primary key auto_increment,
-  `transactionType` enum (`card`,`netbanking`,`upi`),
+  `transactionType` enum ('card','netbanking','upi'),
   `otp` int,
   `otpExpiresIn` int,
-  `status` enum(`pending`,'failed', 'successful') default `pending`,
+  `status` enum('pending','failed', 'successful') default 'pending',
   `transactionId` varchar(100)
 )
