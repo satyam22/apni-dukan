@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Switch, Route, Redirect } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import './App.css';
 
 import Dashboard from './components/Dashboard';
@@ -10,11 +10,11 @@ class App extends Component {
   render() {
     return (
       <Switch>
-        <Route path = '/signin' component = {Signin} />
-        <Route path = '/signup' component = {Signup} />
-        <Route path = '/dashboard' component = {Dashboard} />
-        <Route path = '/payment' component = {Payment} />
-        <Redirect to = '/dashboard' />
+        <Route path='/signin' component={Signin} />
+        <Route path='/signup' component={Signup} />
+        <Route path='/dashboard' component={Dashboard} />
+        <Route path='/payment' component={Payment} />
+        <Redirect to='/dashboard' />
       </Switch>
     );
   }

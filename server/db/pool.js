@@ -4,11 +4,11 @@ import { DB_HOST, DB_NAME,DB_USER,DB_PASSWORD } from './../../server_config';
 
 const pool = mysql.createPool({
   connectionLimit: 10,
-  host: DB_HOST || '35.196.48.248',
-  port: 3306,
-  database: DB_NAME || 'slicepay',
-  user: DB_USER || 'satyam',
-  password: DB_PASSWORD|| 'satyam123',
+  host: DB_HOST || 'localhost',
+  port: 3310,
+  database: DB_NAME || 'testdb',
+  user: DB_USER || 'testuser',
+  password: DB_PASSWORD|| 'testpassword',
   multipleStatements: true,
   insecureAuth: true
 });

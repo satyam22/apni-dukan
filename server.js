@@ -27,8 +27,8 @@ app.use('/payment', paymentRouter);
 
 app.listen(PORT, () => console.log(`Server is listening on port ${PORT}`));
 
-// populateDb("SlicepayFullStackScroll.csv");
+//  populateDb("SlicepayFullStackScroll.csv");
 // populateDb("SlicepayFullStackOffer.csv");
-//populateCards();
+// populateCards();
 // populateUpi(10);
 // populateNetbanking(10);
