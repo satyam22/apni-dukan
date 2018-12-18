@@ -31,10 +31,11 @@ create table `netbankingDetails` (
 `balance` int unsigned default 0
 )
 create table `transactions`(
-  `int` int primary key auto_increment,
+  `id` int primary key auto_increment,
   `transactionType` enum ('card','netbanking','upi'),
   `otp` int,
-  `otpExpiresIn` int,
+  `otpExpiresIn` varchar(20),
   `status` enum('pending','failed', 'successful') default 'pending',
-  `transactionId` varchar(100)
+  `transactionId` varchar(100),
+  `refId` varchar(100) not null
 )
