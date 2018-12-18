@@ -42,6 +42,7 @@ class Payment extends Component {
                 () => <UPI proceedToVerifyOTP={this.handleProceedToVerifyOTP} />} />
               <Redirect to = {`${match.path}/card`} />
             </Switch>
+            <Link to = '/' className="go-back">Go Back</Link>
           </div>
         </div>
       )
